@@ -49,13 +49,13 @@ def handle_events():
 while running:
     clear_canvas()
     background.draw(400, 300)
-    character.clip_draw(frame * 128, 0, 128, 128, x, y)
+    character.clip_draw(frame * 128, 0, 128, 128, x, y, 200, 200)
     update_canvas()
     handle_events()
     frame = (frame + 1) % 6
     if (x < 800 - (character_width // 2) and dir_x == 1) or (x > character_width // 2 and dir_x == -1):
         x += dir_x * 10
-    if (y < 600 - (character_height // 2) and dir_y == 1) or (y > character_height and dir_y == -1):
+    if (y < 600 - (character_height // 2) and dir_y == 1) or (y > character_height + 40 and dir_y == -1):
         y += dir_y * 10
     delay(0.05)
 
