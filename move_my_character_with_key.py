@@ -11,6 +11,8 @@ frame = 0
 dir_x, dir_y = 0, 0
 x = 800 // 2
 y = 600 // 2
+character_width = 64
+character_height = 64
 
 def handle_events():
     global running, dir_x, dir_y, character, character_idle, character_walk
@@ -51,8 +53,10 @@ while running:
     update_canvas()
     handle_events()
     frame = (frame + 1) % 6
-    x += dir_x * 10
-    y += dir_y * 10
+    if (x < 800 - (character_width // 2) and dir_x == 1) or (x > character_width // 2 and dir_x == -1):
+        x += dir_x * 10
+    if (y < 600 - (character_height // 2) and dir_y == 1) or (y > character_height and dir_y == -1):
+        y += dir_y * 10
     delay(0.05)
 
 
